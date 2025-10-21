@@ -1,0 +1,7 @@
+key,value
+min_shifts_per_week,3
+max_half_month_block,true
+max_weekend_days_per_month,4
+forbid_all_c_blocks,true
+target_coverage_weekday,1
+target_coverage_weekend,1

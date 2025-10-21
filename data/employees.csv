@@ -1,0 +1,5 @@
+employee_id,name,role,pensum_type,min_shifts,max_shifts,fte_percent
+E001,Mia,Verkauf,range_shifts_month,8,12,
+E002,Julia,Verkauf,range_shifts_month,8,12,
+E003,Sven,Verkauf,range_shifts_month,10,14,
+E004,Lydia,Verkauf,range_shifts_month,6,10,

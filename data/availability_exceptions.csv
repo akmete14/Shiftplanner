@@ -1,0 +1,4 @@
+employee_id,date,allowed_shifts,type,note
+E001,2025-03-17,,block,Ferien
+E001,2025-03-22,a,prefer,nur früh möglich
+E002,2025-03-23,,block,privat
