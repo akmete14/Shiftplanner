@@ -194,11 +194,27 @@ availability_long = (
 
 # --- 🔼 END NEW SECTION 🔼 ---
 
-print("=== Employee Table (no availability inside) ===")
+#print("=== Employee Table (no availability inside) ===")
 print(df.head(3))
 
-print("\n=== Availability Matrix ===")
-print(availability_matrix.head())
+#print("\n=== Availability Matrix ===")
+#print(availability_matrix.head())
 
-print("\n=== Tidy (Long) Availability ===")
-print(availability_long.head())
+#print("\n=== Tidy (Long) Availability ===")
+#print(availability_long.head())
+#print(availability_matrix.iat[4,0])
+
+
+### Given availability matrix and min/max pensum, we can try to schedule using optimization technique
+from ortools.sat.python import cp_model
+import numpy as np
+
+# Inputs you already have:
+# df: columns ["Employee", "min Pensum", "max Pensum"] (strings -> will parse)
+# availability_matrix: index=Employee, columns=MultiIndex (Date, Slot), values in {0,1}
+
+# --- Prepare indices ---
+employees = list(df["Employee"])
+slots_cols = list(availability_matrix.columns)   # list of (date, slot)
+dates = sorted(set(c[0] for c in slots_cols))
+print(dates)
