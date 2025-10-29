@@ -73,22 +73,24 @@ for val in names_col:
     names.append(str(val).strip())
 
 # 4) Find pensum values (same rows as names)
-pensum_col = raw.iloc[name_row_idx + 1 : name_row_idx + 1 + len(names), 1]
-pensum = [str(v).strip() if not pd.isna(v) else "" for v in pensum_col]
+pensum_min_col = raw.iloc[name_row_idx + 1 : name_row_idx + 1 + len(names), 1]
+pensum_max_col = raw.iloc[name_row_idx + 1: name_row_idx + 1 + len(names), 2]
+pensum_min = [str(v).strip() if not pd.isna(v) else "" for v in pensum_min_col]
+pensum_max = [str(v).strip() if not pd.isna(v) else "" for v in pensum_max_col]
 
 # 5) Combine into one base DataFrame
-df = pd.DataFrame({"Employee": names, "Pensum": pensum})
+df = pd.DataFrame({"Employee": names, "min Pensum": pensum_min, "max Pensum": pensum_max})
 
 # 6) Availability columns start after column 1 (i.e. from column 2 onwards)
-availability_cols = raw.columns[2:]
+availability_cols = raw.columns[3:]
 
 # Get corresponding rows for each employee
-availability_rows = raw.iloc[name_row_idx + 1 : name_row_idx + 1 + len(names), 2:]
+availability_rows = raw.iloc[name_row_idx + 1 : name_row_idx + 1 + len(names), 3:]
 
 # Build availability DataFrame
 availability_df = availability_rows.copy()
 availability_df.index = df["Employee"]  # align by employee names
-availability_df.columns = raw.iloc[name_row_idx, 2:]  # use date headers if available
+availability_df.columns = raw.iloc[name_row_idx, 3:]  # use date headers if available
 
 # 7) Merge availability info into main df
 # You can either:
@@ -100,3 +102,5 @@ df["Availability"] = availability_df.values.tolist()
 
 print(df.head(3))
 print(df["Availability"][0])
+
+# Create Availability Matrix
