@@ -198,7 +198,7 @@ availability_long = (
 print(df.head(3))
 
 #print("\n=== Availability Matrix ===")
-#print(availability_matrix.head())
+print(availability_matrix.head())
 
 #print("\n=== Tidy (Long) Availability ===")
 #print(availability_long.head())
@@ -217,4 +217,4 @@ import numpy as np
 employees = list(df["Employee"])
 slots_cols = list(availability_matrix.columns)   # list of (date, slot)
 dates = sorted(set(c[0] for c in slots_cols))
-print(dates)
+#print(dates)
