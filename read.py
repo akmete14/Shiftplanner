@@ -105,8 +105,8 @@ print(df.head(3))'''
 import pandas as pd
 from pathlib import Path
 
-path_to_file = "03_Sperrdatenplan Länggasse März + Erste Woche April 2025.xlsx"
-sheet_name = "März"
+path_to_file = "05 Sperrdatenplan Verkauf Brupbi Mai 2025.xlsx"
+sheet_name = "Mai"
 
 # 1) Load raw sheet
 raw = pd.read_excel(path_to_file, sheet_name=sheet_name, header=None)
